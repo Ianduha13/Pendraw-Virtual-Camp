@@ -1,4 +1,3 @@
-import e from 'express'
 import {useState, useEffect} from 'react'
 import {FaUser} from 'react-icons/fa'
 
@@ -14,7 +13,7 @@ const Register = () => {
   })
   const {name, email, password, password2} = formData
 
-  const onChange =() => {
+  const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value
@@ -48,7 +47,7 @@ const Register = () => {
           type="text" 
           className="form-control" 
           id= 'email' 
-          email='email' 
+          name='email' 
           value={email} 
           placeholder='Enter your email'
           onChange={onChange} />
@@ -58,7 +57,7 @@ const Register = () => {
           type="text" 
           className="form-control" 
           id= 'password' 
-          password='password' 
+          name ='password' 
           value={password} 
           placeholder='Enter password'
           onChange={onChange} />
@@ -68,9 +67,9 @@ const Register = () => {
           type="text" 
           className="form-control" 
           id= 'password2' 
-          password2='password2' 
+          name ='password2' 
           value={password2} 
-          placeholder='Enter your password2'
+          placeholder='Confirm your password'
           onChange={onChange} />
         </div>
         <div className="form-group">
