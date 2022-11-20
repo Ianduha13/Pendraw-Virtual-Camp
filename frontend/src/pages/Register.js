@@ -3,6 +3,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import {FaUser} from 'react-icons/fa'
+import { register, reset as resetAuth } from '../features/auth/authSlice'
+import useAlert from '../hooks/useAlert'
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +14,18 @@ const Register = () => {
     password2:'',
   })
   const {name, email, password, password2} = formData
+  
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+
+  useAlert({
+    alert: (config) => toast(message, config),
+    reset: () => dispatch(resetAuth()),
+    isError,
+    isSuccess
+  })
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -21,7 +35,13 @@ const Register = () => {
   }
   const onSubmit = (e) =>{
     e.preventDefault()
+    if(password !== password2)
+      return toast.error('Password do not match')
+    const userData = { name, email, password }
+    dispatch(register(userData))
+    navigate('/dashboard')
   }
+
   return(
   <>
     <section className="heading">

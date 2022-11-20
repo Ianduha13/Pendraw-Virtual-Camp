@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 import authService from './authService'
 
 const user = JSON.parse(localStorage.getItem('user'))
@@ -10,53 +10,70 @@ const initialState ={
   isLoading: false,
   message: ''
 }
-export const register = createAsyncThunk('auth/register', async(user, thunkAPI)=>{
-  try{
-    return await authService.register(user)
-  }
-    catch(error){
-      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString ()
-      return thunkAPI.rejectWithValue(message)
-  }
-})
 
 export const authSlice = createSlice({
   name:'auth',
   initialState,
   reducers:{
-    reset: (state) =>{
-      state.isLoading = false
-      state.isError = false
-      state.isError = false
-      state.message = ''
+    reset: () =>{
+      return { ...initialState }
     },
-  },
-  extraReducers: (builder) => {
-    builder
-    .addCase(register.pending, (state) =>{
-      state.isLoading = true
-    })
-    
-    .addCase(register.fulfilled,(state, action)=>{
-      state.isLoading = false
-      state.isSuccess = true
-      state.user = action.payload
-    })
-    
-    .addCase(register.rejected,( state, action) =>{
-      state.isLoading = false
-      state.isError = true
-      state.message = action.payload
-      state.user = null
-    })
+    loading: (state) => {
+      return{
+        ...state,
+        isLoading: true
+      }
+    },
+    loggedIn: (state, action) => {
+      const newState = {
+        ...state,
+        isLoading : false,
+        isSuccess : true,
+        message: action.payload.message,
+        user: action.payload.user
+      }
+      console.log({ newState });
+      return newState
+    },
+    rejected: (state, action) => {
+      return{
+        ...state,
+        isLoading: false,
+        isError: true,
+        message: action.payload,
+        user: null
+      }
+    }
   }
 })
 
-export const {reset} = authSlice.actions
+export const register = (user) => async dispatch => {
+  try{
+    dispatch(loading())
+    await authService.register(user)
+    dispatch(loggedIn({
+      user,
+      message: 'Registered correctly, please verify your email'
+    }))
+  } catch(error){
+    const message = error?.response?.data?.message
+    dispatch(rejected(message))
+  }
+}
+
+export const login = (user) => async dispatch => {
+  try{
+    dispatch(loading())
+    await authService.login(user)
+    dispatch(loggedIn({
+      user,
+      message: 'Logged in correctly'
+    }))
+  } catch(error){
+    const message = error?.response?.data?.message
+    dispatch(rejected(message))
+  }
+}
+
+export const { reset, loading, loggedIn, rejected } = authSlice.actions
 export default authSlice.reducer
-
-
-
-
-
-
