@@ -1,29 +1,17 @@
-import {useState, useEffect} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import {FaSignInAlt} from 'react-icons/fa'
-import { toast } from 'react-toastify'
-import { login, reset as resetAuth } from '../features/auth/authSlice'
-import { useNavigate } from 'react-router-dom'
-import useAlert from '../hooks/useAlert'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { FaSignInAlt } from 'react-icons/fa'
+import { Navigate } from 'react-router-dom'
+import { login } from '../features/auth/authSlice'
 
-const Login = () => {
+const Login = ({ user }) => {
   const [formData, setFormData] = useState({
     email:'',
     password:'',
   })
   const { email, password } = formData
 
-  const { isError, isSuccess, message} = useSelector((state) => state.auth)
-
   const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  useAlert({
-    alert: (config) => toast(message, config),
-    reset: () => dispatch(resetAuth()),
-    isError,
-    isSuccess
-  })
 
   const onChange =(e) => {
     setFormData((prevState) => ({
@@ -35,10 +23,13 @@ const Login = () => {
     e.preventDefault()
     const userData = { email, password }
     dispatch(login(userData))
-    navigate('/dashboard')
   }
+
   return(
   <>
+    {user && (
+      <Navigate to="/dashboard" replace={true} />
+    )}
     <section className="heading">
       <h1>
         <FaSignInAlt/> Login

@@ -1,10 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit'
 import authService from './authService'
 
-const user = JSON.parse(localStorage.getItem('user'))
+const user = JSON.parse(localStorage.getItem('user')) ?? null
 
 const initialState ={
-  user: user ? user : null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -13,10 +12,16 @@ const initialState ={
 
 export const authSlice = createSlice({
   name:'auth',
-  initialState,
+  initialState: {
+    ...initialState,
+    user
+  },
   reducers:{
-    reset: () =>{
-      return { ...initialState }
+    reset: (state) =>{
+      return { ...state, ...initialState }
+    },
+    logout: () => {
+      return { ...initialState, user: null }
     },
     loading: (state) => {
       return{
@@ -32,7 +37,6 @@ export const authSlice = createSlice({
         message: action.payload.message,
         user: action.payload.user
       }
-      console.log({ newState });
       return newState
     },
     rejected: (state, action) => {
@@ -42,6 +46,13 @@ export const authSlice = createSlice({
         isError: true,
         message: action.payload,
         user: null
+      }
+    },
+    validationError: (state, action) => {
+      return{
+        ...state,
+        isError: true,
+        message: action.payload,
       }
     }
   }
@@ -61,10 +72,10 @@ export const register = (user) => async dispatch => {
   }
 }
 
-export const login = (user) => async dispatch => {
+export const login = (userData) => async dispatch => {
   try{
     dispatch(loading())
-    await authService.login(user)
+    const user = await authService.login(userData)
     dispatch(loggedIn({
       user,
       message: 'Logged in correctly'
@@ -75,5 +86,5 @@ export const login = (user) => async dispatch => {
   }
 }
 
-export const { reset, loading, loggedIn, rejected } = authSlice.actions
+export const { reset, logout, loading, loggedIn, rejected, validationError } = authSlice.actions
 export default authSlice.reducer
