@@ -1,23 +1,11 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { logout as storeLogout } from '../features/auth/authSlice'
+import React from "react"
 
 const Dashboard = ({ user }) => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-
-  const logout = () => {
-    localStorage.removeItem('user')
-    dispatch(storeLogout())
-    navigate('/login')
-  }
-
-  return(
+  return (
     <>
-      <div>Dashboard
-      {JSON.stringify(user)}
-      <button onClick={logout}>logout</button>
+      <div>
+        Dashboard
+        {JSON.stringify(user)}
       </div>
     </>
   )
