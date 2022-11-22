@@ -1,14 +1,8 @@
 import React from "react"
+import AccordionForm from "../components/AccordionForm"
 
 const Dashboard = ({ user }) => {
-  return (
-    <>
-      <div>
-        Dashboard
-        {JSON.stringify(user)}
-      </div>
-    </>
-  )
+  return <AccordionForm />
 }
 
 export default Dashboard

@@ -1,90 +1,95 @@
-import {createSlice} from '@reduxjs/toolkit'
-import authService from './authService'
+import { createSlice } from "@reduxjs/toolkit"
+import authService from "./authService"
 
-const user = JSON.parse(localStorage.getItem('user')) ?? null
+const user = JSON.parse(localStorage.getItem("user")) ?? null
 
-const initialState ={
+const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: ''
+  message: "",
 }
 
 export const authSlice = createSlice({
-  name:'auth',
+  name: "auth",
   initialState: {
     ...initialState,
-    user
+    user,
   },
-  reducers:{
-    reset: (state) =>{
+  reducers: {
+    reset: (state) => {
       return { ...state, ...initialState }
     },
     logout: () => {
       return { ...initialState, user: null }
     },
     loading: (state) => {
-      return{
+      return {
         ...state,
-        isLoading: true
+        isLoading: true,
       }
     },
     loggedIn: (state, action) => {
       const newState = {
         ...state,
-        isLoading : false,
-        isSuccess : true,
+        isLoading: false,
+        isSuccess: true,
         message: action.payload.message,
-        user: action.payload.user
+        user: action.payload.user,
       }
       return newState
     },
     rejected: (state, action) => {
-      return{
+      return {
         ...state,
         isLoading: false,
         isError: true,
         message: action.payload,
-        user: null
+        user: null,
       }
     },
     validationError: (state, action) => {
-      return{
+      return {
         ...state,
         isError: true,
         message: action.payload,
       }
-    }
-  }
+    },
+  },
 })
 
-export const register = (user) => async dispatch => {
-  try{
+export const register = (user) => async (dispatch) => {
+  try {
     dispatch(loading())
     await authService.register(user)
-    dispatch(loggedIn({
-      user,
-      message: 'Registered correctly, please verify your email'
-    }))
-  } catch(error){
+    dispatch(
+      loggedIn({
+        user,
+        message: "Registered correctly, please verify your email",
+      })
+    )
+  } catch (error) {
     const message = error?.response?.data?.message
     dispatch(rejected(message))
   }
 }
 
-export const login = (userData) => async dispatch => {
-  try{
+export const login = (userData) => async (dispatch) => {
+  try {
     dispatch(loading())
     const user = await authService.login(userData)
-    dispatch(loggedIn({
-      user,
-      message: 'Logged in correctly'
-    }))
-  } catch(error){
+    dispatch(
+      loggedIn({
+        user,
+        message: "Logged in correctly",
+      })
+    )
+  } catch (error) {
     const message = error?.response?.data?.message
     dispatch(rejected(message))
   }
 }
 
-export const { reset, logout, loading, loggedIn, rejected, validationError } = authSlice.actions
+export const { reset, logout, loading, loggedIn, rejected, validationError } =
+  authSlice.actions
 export default authSlice.reducer

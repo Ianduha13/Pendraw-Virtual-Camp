@@ -1,9 +1,10 @@
 import React from "react"
+import CardContainer from "../components/CardContainer"
 
 const LandingPage = () => {
   return (
     <>
-      <div>Landing</div>
+      <CardContainer />
     </>
   )
 }
