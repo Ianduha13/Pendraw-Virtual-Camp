@@ -12,6 +12,7 @@ import useAlert from "./hooks/useAlert"
 import { reset as resetAuth } from "./features/auth/authSlice"
 import { toast } from "react-toastify"
 import Footer from "./components/Footer"
+import Profile from "./pages/Profile"
 
 function App() {
   const dispatch = useDispatch()
@@ -37,6 +38,7 @@ function App() {
             <Route path='/dashboard' element={<Dashboard user={user} />} />
             <Route path='/login' element={<Login user={user} />} />
             <Route path='/signup' element={<Register user={user} />} />
+            <Route path='/me' element={<Profile user={user} />} />
           </Routes>
         </div>
         <Footer />
