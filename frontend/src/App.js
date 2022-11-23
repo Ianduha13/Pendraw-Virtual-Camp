@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux"
 import useAlert from "./hooks/useAlert"
 import { reset as resetAuth } from "./features/auth/authSlice"
 import { toast } from "react-toastify"
+import Footer from "./components/Footer"
 
 function App() {
   const dispatch = useDispatch()
@@ -38,6 +39,7 @@ function App() {
             <Route path='/signup' element={<Register user={user} />} />
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
       <ToastContainer />
     </>

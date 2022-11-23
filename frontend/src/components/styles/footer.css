@@ -1,0 +1,14 @@
+footer{
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+footer p {
+  position: relative;
+  font-size: large;
+  font-weight: 500;
+  bottom: -6px;
+}

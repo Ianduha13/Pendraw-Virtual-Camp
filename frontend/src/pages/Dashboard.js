@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Dashboard = ({ user }) => {
   return (
-    <>
+    <div className='container'>
       <div className='left-container'>
         <ul>
           <li>
@@ -33,7 +33,7 @@ const Dashboard = ({ user }) => {
           <button className='classroom-btn'>Classroom 1</button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
