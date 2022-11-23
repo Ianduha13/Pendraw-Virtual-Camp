@@ -1,0 +1,11 @@
+.container-md{
+  position: relative;
+  max-width: 90%;
+  max-height: 80%;
+  margin: 2% 5%;
+  border: 1px solid #c5c1c1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}

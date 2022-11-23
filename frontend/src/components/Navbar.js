@@ -1,4 +1,13 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser, FaHome } from "react-icons/fa"
+import {
+  HiOutlineUser,
+  HiOutlineSun,
+  HiOutlineLogout,
+  HiOutlineLogin,
+  HiOutlineHome,
+  HiOutlineUserAdd,
+  HiOutlineBell,
+} from "react-icons/hi"
+import { MdOutlineDraw } from "react-icons/md"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
@@ -18,32 +27,57 @@ const Header = ({ user }) => {
   return (
     <header className='header'>
       <div className='logo'>
-        <Link to='/'>PenDraw Virtual Camp</Link>
+        <MdOutlineDraw className='logo-svg' />
+        <Link to='/'>
+          <p>PenDraw Virtual Camp</p>
+        </Link>
       </div>
       {user ? (
         <ul>
           <li>
-            <Link to='/dashboard'>
-              <FaHome /> Dashboard
-            </Link>
+            <button className='btn-highlight'>
+              <Link to='/dashboard'>
+                <HiOutlineHome /> Dashboard
+              </Link>
+            </button>
           </li>
           <li>
-            <Link to='/login' onClick={logout}>
-              <FaSignOutAlt /> Logout
-            </Link>
+            <button className='btn-options'>
+              <Link to='/notifications'>
+                <HiOutlineBell />
+              </Link>
+            </button>
+          </li>
+          <li>
+            <button className='btn-options'>
+              <Link to='/me'>
+                <HiOutlineUser />
+              </Link>
+            </button>
+          </li>
+          <li>
+            <button className='btn-options'>
+              <Link to='/login' onClick={logout}>
+                <HiOutlineLogout />
+              </Link>
+            </button>
           </li>
         </ul>
       ) : (
         <ul>
           <li>
-            <Link to='/login'>
-              <FaSignInAlt /> Login
-            </Link>
+            <button className='btn-highlight'>
+              <Link to='/signup'>
+                <HiOutlineUserAdd /> Register
+              </Link>
+            </button>
           </li>
           <li>
-            <Link to='/signup'>
-              <FaUser /> Register
-            </Link>
+            <button className='btn-options btn-login'>
+              <Link to='/login'>
+                <HiOutlineLogin /> Login
+              </Link>
+            </button>
           </li>
         </ul>
       )}
