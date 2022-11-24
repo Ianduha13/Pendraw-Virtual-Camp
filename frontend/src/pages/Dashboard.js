@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
-
+import "../components/styles/Dashboard.css"
 const Dashboard = ({ user }) => {
   return (
-    <div className='container'>
+    <div className='md-container'>
       <div className='left-container'>
         <ul>
           <li>
@@ -22,12 +22,12 @@ const Dashboard = ({ user }) => {
       </div>
       <div className='right-container'>
         <div className='btn-container'>
-          <button className='classroom-btn'>Classroom 1</button>
-          <button className='classroom-btn'>Classroom 1</button>
-          <button className='classroom-btn'>Classroom 1</button>
-          <button className='classroom-btn'>Classroom 1</button>
-          <button className='classroom-btn'>Classroom 1</button>
-          <button className='classroom-btn'>Classroom 1</button>
+          <button className='classroom-btn art-btn'>Art 1</button>
+          <button className='classroom-btn art-btn'>Art 2</button>
+          <button className='classroom-btn art-btn'>Art 3</button>
+          <button className='classroom-btn music-btn'>Music 1</button>
+          <button className='classroom-btn music-btn'>Music 2</button>
+          <button className='classroom-btn music-btn'>Music 3</button>
           <button className='classroom-btn'>Classroom 1</button>
           <button className='classroom-btn'>Classroom 1</button>
           <button className='classroom-btn'>Classroom 1</button>
