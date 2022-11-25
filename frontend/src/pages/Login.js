@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { HiOutlineLogin } from "react-icons/hi"
 import { Navigate } from "react-router-dom"
 import { login } from "../features/auth/authSlice"
+import "../components/styles/Form.css"
 
 const Login = ({ user }) => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const Login = ({ user }) => {
 
   return (
     <>
-      {user && <Navigate to='/dashboard' replace={true} />}
+      {user && <Navigate to='/' replace={true} />}
       <section className='heading'>
         <h1 className='title'>
           <HiOutlineLogin /> Login

@@ -13,6 +13,7 @@ import { reset as resetAuth } from "./features/auth/authSlice"
 import { toast } from "react-toastify"
 import Footer from "./components/Footer"
 import Profile from "./pages/Profile"
+import Posts from "./pages/Posts"
 
 function App() {
   const dispatch = useDispatch()
@@ -37,6 +38,7 @@ function App() {
             <Route path='/' element={<LandingPage user={user} />} />
             <Route path='/dashboard' element={<Dashboard user={user} />} />
             <Route path='/login' element={<Login user={user} />} />
+            <Route path='/posts' element={<Posts user={user} />} />
             <Route path='/signup' element={<Register user={user} />} />
             <Route path='/me' element={<Profile user={user} />} />
           </Routes>

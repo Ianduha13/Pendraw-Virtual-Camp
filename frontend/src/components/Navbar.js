@@ -1,6 +1,6 @@
 import {
   HiOutlineUser,
-  HiOutlineSun,
+  HiMenu,
   HiOutlineLogout,
   HiOutlineLogin,
   HiOutlineHome,
@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { logout as storeLogout } from "../features/auth/authSlice"
 import { toast } from "react-toastify"
+import "./styles/Navbar.css"
 
 const Header = ({ user }) => {
   const navigate = useNavigate()
@@ -35,7 +36,7 @@ const Header = ({ user }) => {
       {user ? (
         <ul>
           <li>
-            <button className='btn-highlight'>
+            <button className='btn-options'>
               <Link to='/dashboard'>
                 <HiOutlineHome /> Dashboard
               </Link>
@@ -62,11 +63,16 @@ const Header = ({ user }) => {
               </Link>
             </button>
           </li>
+          <li>
+            <button className='btn-options inactive'>
+              <HiMenu />
+            </button>
+          </li>
         </ul>
       ) : (
         <ul>
           <li>
-            <button className='btn-highlight'>
+            <button className='btn-options'>
               <Link to='/signup'>
                 <HiOutlineUserAdd /> Register
               </Link>
@@ -77,6 +83,11 @@ const Header = ({ user }) => {
               <Link to='/login'>
                 <HiOutlineLogin /> Login
               </Link>
+            </button>
+          </li>
+          <li>
+            <button className='btn-options inactive'>
+              <HiMenu />
             </button>
           </li>
         </ul>

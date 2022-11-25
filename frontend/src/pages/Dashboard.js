@@ -30,7 +30,7 @@ const Dashboard = ({ user }) => {
           <button className='classroom-btn music-btn'>Music 3</button>
           <button className='classroom-btn'>Classroom 1</button>
           <button className='classroom-btn'>Classroom 1</button>
-          <button className='classroom-btn'>Classroom 1</button>
+          <button className='classroom-btn'>Add one</button>
         </div>
       </div>
     </div>

@@ -1,10 +1,14 @@
 import React from "react"
-import CardContainer from "../components/CardContainer"
+import "../components/styles/CardContainer.css"
 
 const LandingPage = () => {
   return (
     <>
-      <CardContainer />
+      <div className='cards-container'>
+        <div className='card-container'>
+          <div className='card'>post</div>
+        </div>
+      </div>
     </>
   )
 }
