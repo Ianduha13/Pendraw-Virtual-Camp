@@ -1,6 +1,5 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
-import * as bootstrap from "bootstrap"
 import { Provider } from "react-redux"
 import { store } from "./app/store"
 import App from "./App"

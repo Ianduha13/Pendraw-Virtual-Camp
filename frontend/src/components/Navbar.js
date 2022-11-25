@@ -46,9 +46,7 @@ const Header = ({ user }) => {
           </li>
           <li>
             <button className='btn-options'>
-              <Link to='/notifications'>
-                <HiOutlineBell />
-              </Link>
+              <HiOutlineBell />
             </button>
           </li>
           <li>

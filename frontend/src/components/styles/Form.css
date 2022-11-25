@@ -42,3 +42,12 @@
 input{
   padding-left: 10px;
 }
+@media (max-width: 750px) {
+  .form-group{
+    align-self: center;
+    width: 300px;
+  }.form-control{
+    align-self: center;
+    width: 300px;
+  }
+}

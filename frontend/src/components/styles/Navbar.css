@@ -63,7 +63,7 @@
 .inactive{
   display: none;
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .btn-options{
     display: none;
   }

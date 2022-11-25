@@ -5,7 +5,7 @@ const Dashboard = ({ user }) => {
   return (
     <div className='md-container'>
       <div className='left-container'>
-        <ul>
+        <ul className='options'>
           <li>
             <button>
               <Link to='/'>Landing Page</Link>

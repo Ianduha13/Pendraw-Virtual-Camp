@@ -6,11 +6,7 @@ footer{
   display: flex;
   justify-content: center;
 }
-footer p {
-  font-size: large;
-  font-weight: 500;
-  bottom: -6px;
-}
+
 .btn-footer{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-left: 10px;
@@ -28,10 +24,5 @@ footer p {
 .btn-footer svg{
   transform: scale(1.5);
 }
-@media (max-width:500px) {
-  footer p{
-    position:unset;
-    display: none;
-  }
-}
+
 

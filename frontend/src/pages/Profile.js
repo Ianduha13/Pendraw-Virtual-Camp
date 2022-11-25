@@ -9,7 +9,7 @@ const Profile = ({ user }) => {
   return (
     <div className='profile-container'>
       <div className='photo'>
-        <button>dd your photo</button>
+        <button>Add your photo</button>
       </div>
       <div className='data-container'>
         <p>Name: {userName}</p>
