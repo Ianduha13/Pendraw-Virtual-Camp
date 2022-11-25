@@ -19,7 +19,7 @@
   text-decoration: none;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: 15px;
   border-bottom: 1px solid #000;
   font-weight: 500;
@@ -32,11 +32,16 @@
 .btn-options{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-left: 10px;
-  border: 2px solid #000;
+  border: 1 px solid #000;
   padding: 8px;
   border-radius: 20px;
   background: transparent;
 }
+.btn-options p{
+  margin-left: 4px;
+  font-weight: 500;
+}
+
 
 .header ul li a{
   display: flex;
@@ -55,7 +60,6 @@
   transform: scale(1.5);
   margin-right: 4px;
 }
-
 .inactive{
   display: none;
 }
@@ -64,7 +68,6 @@
     display: none;
   }
   .inactive{
-    display: inline;
+    display: block;
   }
-  
 }

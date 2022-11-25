@@ -3,6 +3,8 @@
 * {
   margin: 0;
   padding: 0;
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
   box-sizing: border-box;
 }
 
@@ -19,7 +21,7 @@ a {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(255,255,255,1) 45%, rgba(231,0,255,1) 100%);
+  background: linear-gradient(90deg, #fff 45%, rgba(165,55,253,1) 100%);
 }
 
 

@@ -7,8 +7,31 @@ footer{
   justify-content: center;
 }
 footer p {
-  position: relative;
   font-size: large;
   font-weight: 500;
   bottom: -6px;
 }
+.btn-footer{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-left: 10px;
+  border: 1px solid #000;
+  padding: 8px;
+  border-radius: 20px;
+  background: transparent;
+}
+.btn-footer p{
+  margin-left: 4px;
+}
+.btn-footer:hover{
+  transform: scale(0.95);
+}
+.btn-footer svg{
+  transform: scale(1.5);
+}
+@media (max-width:500px) {
+  footer p{
+    position:unset;
+    display: none;
+  }
+}
+

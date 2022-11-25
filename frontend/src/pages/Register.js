@@ -63,7 +63,7 @@ const Register = ({ user }) => {
           </div>
           <div className='form-group'>
             <input
-              type='text'
+              type='password'
               className='form-control'
               id='password'
               name='password'
@@ -74,7 +74,7 @@ const Register = ({ user }) => {
           </div>
           <div className='form-group'>
             <input
-              type='text'
+              type='password'
               className='form-control'
               id='password2'
               name='password2'

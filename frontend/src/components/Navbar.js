@@ -25,6 +25,7 @@ const Header = ({ user }) => {
     navigate("/login")
     toast.success("Logged out correctly")
   }
+  const toggleMenu = (e) => {}
   return (
     <header className='header'>
       <div className='logo'>
@@ -36,9 +37,10 @@ const Header = ({ user }) => {
       {user ? (
         <ul>
           <li>
-            <button className='btn-options'>
+            <button className='btn-options main-btn'>
               <Link to='/dashboard'>
-                <HiOutlineHome /> Dashboard
+                <HiOutlineHome />
+                <p>Dashboard</p>
               </Link>
             </button>
           </li>
@@ -64,7 +66,10 @@ const Header = ({ user }) => {
             </button>
           </li>
           <li>
-            <button className='btn-options inactive'>
+            <button
+              className='btn-menu btn-options inactive'
+              onClick={toggleMenu()}
+            >
               <HiMenu />
             </button>
           </li>
@@ -72,9 +77,10 @@ const Header = ({ user }) => {
       ) : (
         <ul>
           <li>
-            <button className='btn-options'>
+            <button className='btn-options main-btn'>
               <Link to='/signup'>
-                <HiOutlineUserAdd /> Register
+                <HiOutlineUserAdd />
+                <p>Register</p>
               </Link>
             </button>
           </li>
@@ -86,7 +92,10 @@ const Header = ({ user }) => {
             </button>
           </li>
           <li>
-            <button className='btn-options inactive'>
+            <button
+              className='btn-menu btn-options inactive'
+              onClick={toggleMenu()}
+            >
               <HiMenu />
             </button>
           </li>

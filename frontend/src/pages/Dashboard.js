@@ -7,21 +7,32 @@ const Dashboard = ({ user }) => {
       <div className='left-container'>
         <ul>
           <li>
-            <Link to='/'>Landing Page</Link>
+            <button>
+              <Link to='/'>Landing Page</Link>
+            </button>
           </li>
           <li>
-            <Link to='/posts'>Create a post!</Link>
+            <button>
+              <Link to='/posts'>Create a post!</Link>
+            </button>
           </li>
           <li>
-            <Link to='/classrooms'>Go to classrooms</Link>
+            <button>
+              <Link to='/classrooms'>Go to classrooms</Link>
+            </button>
           </li>
           <li>
-            <Link to='/settings'>Settings</Link>
+            <button>
+              <Link to='/settings'>Settings</Link>
+            </button>
           </li>
         </ul>
       </div>
       <div className='right-container'>
         <div className='btn-container'>
+          <button className='classroom-btn art-btn'>Art 1</button>
+          <button className='classroom-btn art-btn'>Art 2</button>
+          <button className='classroom-btn art-btn'>Art 3</button>
           <button className='classroom-btn art-btn'>Art 1</button>
           <button className='classroom-btn art-btn'>Art 2</button>
           <button className='classroom-btn art-btn'>Art 3</button>
