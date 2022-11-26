@@ -35,7 +35,6 @@ const Login = ({ user }) => {
         </h1>
         <p>Login and start learning!</p>
       </section>
-
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>

@@ -48,17 +48,16 @@ const Header = ({ user }) => {
             <NotificationButton />
           </li>
           <li>
-            <button className='btn-options'>
-              <Link to='/me'>
-                <HiOutlineUser />
-              </Link>
+            <button className='btn-options' onClick={() => navigate("/me")}>
+              <HiOutlineUser />
             </button>
           </li>
           <li>
-            <button className='btn-options'>
-              <Link to='/login' onClick={logout}>
-                <HiOutlineLogout />
-              </Link>
+            <button
+              className='btn-options'
+              onClick={(() => navigate("/dashboard"), logout)}
+            >
+              <HiOutlineLogout />
             </button>
           </li>
           <li>
@@ -68,18 +67,20 @@ const Header = ({ user }) => {
       ) : (
         <ul>
           <li>
-            <button className='btn-options main-btn'>
-              <Link to='/signup'>
-                <HiOutlineUserAdd />
-                <p>Register</p>
-              </Link>
+            <button
+              className='btn-options main-btn'
+              onClick={() => navigate("/signup")}
+            >
+              <HiOutlineUserAdd />
+              <p>Register</p>
             </button>
           </li>
           <li>
-            <button className='btn-options btn-login'>
-              <Link to='/login'>
-                <HiOutlineLogin /> Login
-              </Link>
+            <button
+              className='btn-options btn-login'
+              onClick={() => navigate("/login")}
+            >
+              <HiOutlineLogin /> Login
             </button>
           </li>
           <li>
