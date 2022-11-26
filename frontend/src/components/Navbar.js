@@ -4,7 +4,6 @@ import {
   HiOutlineLogin,
   HiOutlineHome,
   HiOutlineUserAdd,
-  HiOutlineBell,
 } from "react-icons/hi"
 import { MdOutlineDraw } from "react-icons/md"
 import { Link } from "react-router-dom"
@@ -14,6 +13,7 @@ import { logout as storeLogout } from "../features/auth/authSlice"
 import { toast } from "react-toastify"
 import "./styles/Navbar.css"
 import MobileNavigationMenu from "./MobileNavigationMenu"
+import NotificationButton from "./NotificationButton"
 
 const Header = ({ user }) => {
   const navigate = useNavigate()
@@ -36,17 +36,16 @@ const Header = ({ user }) => {
       {user ? (
         <ul>
           <li>
-            <button className='btn-options main-btn'>
-              <Link to='/dashboard'>
-                <HiOutlineHome />
-                <p>Dashboard</p>
-              </Link>
+            <button
+              className='btn-options main-btn'
+              onClick={() => navigate("/dashboard")}
+            >
+              <HiOutlineHome />
+              <p>Dashboard</p>
             </button>
           </li>
           <li>
-            <button className='btn-options'>
-              <HiOutlineBell />
-            </button>
+            <NotificationButton />
           </li>
           <li>
             <button className='btn-options'>
