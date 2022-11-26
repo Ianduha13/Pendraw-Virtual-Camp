@@ -71,3 +71,12 @@
     display: block;
   }
 }
+@media (max-width: 300px) {
+  .logo-svg{
+    display: none;
+  }
+  .logo p{
+    margin-left: -12px;
+    text-align: start;
+  }
+}

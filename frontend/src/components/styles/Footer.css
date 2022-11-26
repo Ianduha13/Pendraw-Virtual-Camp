@@ -1,5 +1,5 @@
 footer{
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin-bottom: 8px;
   width: 100%;
@@ -23,6 +23,13 @@ footer{
 }
 .btn-footer svg{
   transform: scale(1.5);
+}
+@media(max-width: 850px)
+{
+footer{
+  position: absolute;
+  bottom: -20%;
+}
 }
 
 

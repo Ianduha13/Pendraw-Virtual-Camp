@@ -1,30 +1,26 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import "../components/styles/Dashboard.css"
+import { useNavigate } from "react-router-dom"
+//god use from navigate
 const Dashboard = ({ user }) => {
+  const navigate = useNavigate()
   return (
     <div className='md-container'>
       <div className='left-container'>
         <ul className='options'>
           <li>
-            <button>
-              <Link to='/'>Landing Page</Link>
+            <button onClick={() => navigate("/")}>Go to Landing Page!</button>
+          </li>
+          <li>
+            <button onClick={() => navigate("/posts")}>Create a post!</button>
+          </li>
+          <li>
+            <button onClick={() => navigate("/classrooms")}>
+              Go to Classrooms
             </button>
           </li>
           <li>
-            <button>
-              <Link to='/posts'>Create a post!</Link>
-            </button>
-          </li>
-          <li>
-            <button>
-              <Link to='/classrooms'>Go to classrooms</Link>
-            </button>
-          </li>
-          <li>
-            <button>
-              <Link to='/settings'>Settings</Link>
-            </button>
+            <button onClick={() => navigate("/me")}>Settings</button>
           </li>
         </ul>
       </div>

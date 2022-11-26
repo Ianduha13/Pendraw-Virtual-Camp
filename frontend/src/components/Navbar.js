@@ -1,6 +1,5 @@
 import {
   HiOutlineUser,
-  HiMenu,
   HiOutlineLogout,
   HiOutlineLogin,
   HiOutlineHome,
@@ -14,6 +13,7 @@ import { useDispatch } from "react-redux"
 import { logout as storeLogout } from "../features/auth/authSlice"
 import { toast } from "react-toastify"
 import "./styles/Navbar.css"
+import MobileNavigationMenu from "./MobileNavigationMenu"
 
 const Header = ({ user }) => {
   const navigate = useNavigate()
@@ -25,7 +25,6 @@ const Header = ({ user }) => {
     navigate("/login")
     toast.success("Logged out correctly")
   }
-  const toggleMenu = (e) => {}
   return (
     <header className='header'>
       <div className='logo'>
@@ -64,12 +63,7 @@ const Header = ({ user }) => {
             </button>
           </li>
           <li>
-            <button
-              className='btn-menu btn-options inactive'
-              onClick={toggleMenu()}
-            >
-              <HiMenu />
-            </button>
+            <MobileNavigationMenu user={user} logout={logout} />
           </li>
         </ul>
       ) : (
@@ -90,12 +84,7 @@ const Header = ({ user }) => {
             </button>
           </li>
           <li>
-            <button
-              className='btn-menu btn-options inactive'
-              onClick={toggleMenu()}
-            >
-              <HiMenu />
-            </button>
+            <MobileNavigationMenu />
           </li>
         </ul>
       )}
