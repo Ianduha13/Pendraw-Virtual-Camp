@@ -20,6 +20,7 @@ function App() {
 
   const authState = useSelector((state) => state.auth)
   const { user, isError, isSuccess, message } = authState
+  console.log(authState)
 
   useAlert({
     alert: (config) => toast(message, config),
@@ -36,11 +37,23 @@ function App() {
           <Routes>
             {/* TO-DO protect dashboard route */}
             <Route path='/' element={<LandingPage user={user} />} />
-            <Route path='/dashboard' element={<Dashboard user={user} />} />
             <Route path='/login' element={<Login user={user} />} />
-            <Route path='/posts' element={<Posts user={user} />} />
-            <Route path='/signup' element={<Register user={user} />} />
-            <Route path='/me' element={<Profile user={user} />} />
+            <Route
+              path='/dashboard'
+              element={user === null ? <Login /> : <Dashboard user={user} />}
+            />
+            <Route
+              path='/posts'
+              element={user === null ? <Login /> : <Posts user={user} />}
+            />
+            <Route
+              path='/signup'
+              element={user === null ? <Login /> : <Register user={user} />}
+            />
+            <Route
+              path='/me'
+              element={user === null ? <Login /> : <Profile user={user} />}
+            />
           </Routes>
         </div>
         <Footer />
