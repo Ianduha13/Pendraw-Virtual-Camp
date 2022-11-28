@@ -20,7 +20,6 @@ function App() {
 
   const authState = useSelector((state) => state.auth)
   const { user, isError, isSuccess, message } = authState
-  console.log(authState)
 
   useAlert({
     alert: (config) => toast(message, config),

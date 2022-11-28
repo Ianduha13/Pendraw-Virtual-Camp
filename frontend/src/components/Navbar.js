@@ -26,7 +26,7 @@ const Header = ({ user }) => {
     toast.success("Logged out correctly")
   }
   return (
-    <header className='header'>
+    <nav className='header'>
       <div className='logo'>
         <MdOutlineDraw className='logo-svg' />
         <Link to='/'>
@@ -88,7 +88,7 @@ const Header = ({ user }) => {
           </li>
         </ul>
       )}
-    </header>
+    </nav>
   )
 }
 

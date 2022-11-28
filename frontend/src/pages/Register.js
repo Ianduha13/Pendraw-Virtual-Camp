@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { Navigate } from "react-router-dom"
 import { register, validationError } from "../features/auth/authSlice"
 import "../components/styles/Form.css"
+
 const Register = ({ user }) => {
   const [formData, setFormData] = useState({
     name: "",
