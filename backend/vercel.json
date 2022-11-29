@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src":"https://pendraw-campus-backend.vercel.app/",
+      "src":"./server.js",
       "use": "@vercel/node"
     }
   ],
   "routes":[
     {
       "src":"/(.*)",
-      "dest": "https://pendraw-campus-front.vercel.app/"
+      "dest": "/"
     }
   ]
 }
