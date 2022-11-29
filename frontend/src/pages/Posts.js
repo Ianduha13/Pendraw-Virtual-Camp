@@ -59,10 +59,10 @@ const Register = ({ user }) => {
               onChange={onChange}
             />
           </div>
-          <div className='form-group'>
-            <input
+          <div className='form-group '>
+            <textarea
               type='text'
-              className='form-control'
+              className='form-control form-text'
               id='text'
               name='text'
               placeholder='Enter the post text'

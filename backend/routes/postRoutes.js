@@ -8,7 +8,7 @@ const {
 } = require("../controllers/postController")
 const { protect } = require("../middleware/authMiddleware")
 
-router.route("/").get(protect, getPosts).post(protect, setPost)
+router.route("/").get(getPosts).post(protect, setPost)
 router.route("/:id").delete(protect, deletePost).put(protect, updatePost)
 
 module.exports = router

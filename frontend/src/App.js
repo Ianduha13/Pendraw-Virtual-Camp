@@ -49,10 +49,7 @@ function App() {
               path='/me'
               element={user === null ? <Login /> : <Profile user={user} />}
             />
-            <Route
-              path='/'
-              element={user ? <LandingPage user={user} /> : <Login />}
-            />
+            <Route path='/' element=<LandingPage user={user} /> />
           </Routes>
         </div>
         <Footer />

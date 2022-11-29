@@ -1,30 +1,41 @@
-import "../components/styles/CardContainer.css"
 import { useState, useEffect } from "react"
+import "../components/styles/CardContainer.css"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
-const LandingPage = () => {
+const LandingPage = ({ user }) => {
+  const API_URL = "/api/posts/"
   const [posts, setPost] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const fetchImages = async () => {
-      const response = await fetch(
-        `https://api.unsplash.com/photos?client_id=xIphgH7aVd4uy4bYRavSS5T_tu7KqJWv9tbR5XAknSY`
-      )
-      const data = await response.json()
-      console.log(data)
-      setPost(data.urls)
-    }
-
-    fetchImages()
+    axios
+      .get(API_URL)
+      .then((res) => setPost(res.data))
+      .catch((err) => console.log(err))
   }, [])
+  console.log(posts)
+
   return (
     <>
       <div className='cards-container'>
         <div className='card-container'>
-          {posts.map((urls) => (
-            <div className='card'>
-              <img src={urls.small} alt={urls.regular} />
+          {posts.map((post) => (
+            <div className='card' key={`${post._id}`}>
+              <h1>{post.title}</h1>
+              <h4>{post.subtitle}</h4>
+              <p>{post.text}</p>
             </div>
           ))}
+          {user ? (
+            <button className='button' onClick={() => navigate("/posts")}>
+              Make a post!
+            </button>
+          ) : (
+            <button className='button' onClick={() => navigate("/signup")}>
+              Only users can make a post!
+            </button>
+          )}
         </div>
       </div>
     </>
