@@ -11,7 +11,8 @@ const post = async (postData, token) => {
   const response = await axios.post(API_URL, postData, config)
   return response.data
 }
-const goalService = {
+
+const postService = {
   post,
 }
-export default goalService
+export default postService

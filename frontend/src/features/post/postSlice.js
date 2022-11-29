@@ -1,6 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 import postService from "./postService"
 
+const posts = null
 const initialState = {
   posts: [],
   isError: false,
@@ -9,46 +10,63 @@ const initialState = {
   message: "",
 }
 
-export const createPost = createAsyncThunk(
-  "posts/create",
-  async (postData, thunkAPI) => {
-    try {
-      const token = thunkAPI.getState().auth.user.token
-      return await postService.post(postData, token)
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString()
-      return thunkAPI.rejectWithValue(message)
-    }
-  }
-)
 export const postSlice = createSlice({
-  name: "post",
-  initialState,
-  reducers: {
-    reset: (state) => initialState,
+  name: "posts",
+  initialState: {
+    ...initialState,
+    posts,
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(createPost.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(createPost.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.isSuccess = true
-        state.posts.push(action.payload)
-      })
-      .addCase(createPost.rejected, (state, action) => {
-        state.isLoading = false
-        state.isError = true
-        state.message = action.payload
-      })
+  reducers: {
+    reset: (state) => {
+      return { ...state, ...initialState }
+    },
+    logout: () => {
+      return { ...initialState, user: null }
+    },
+    loading: (state) => {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    },
+    posted: (state, action) => {
+      const newState = {
+        ...state,
+        isLoading: false,
+        isSuccess: true,
+        message: action.payload.message,
+        post: action.payload.post,
+      }
+      return newState
+    },
+    rejected: (state, action) => {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        message: action.payload,
+        user: null,
+      }
+    },
   },
 })
 
-export const { reset } = postSlice.actions
+export const post = (post, token) => async (dispatch) => {
+  try {
+    dispatch(loading())
+    await postService.post(post, token)
+    dispatch(
+      posted({
+        post,
+        message: "Registered correctly, please verify your email",
+      })
+    )
+  } catch (error) {
+    const message = error?.response?.data?.message
+    dispatch(rejected(message))
+  }
+}
+
+export const { reset, gettingPosts, posted, loading, rejected } =
+  postSlice.actions
 export default postSlice.reducer

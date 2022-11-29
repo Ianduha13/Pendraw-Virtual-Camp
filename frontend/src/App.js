@@ -17,7 +17,6 @@ import Posts from "./pages/Posts"
 
 function App() {
   const dispatch = useDispatch()
-
   const authState = useSelector((state) => state.auth)
   const { user, isError, isSuccess, message } = authState
 
@@ -35,7 +34,7 @@ function App() {
           <Header user={user} />
           <Routes>
             {/* TO-DO protect dashboard route */}
-            <Route path='/' element={<LandingPage user={user} />} />
+
             <Route path='/login' element={<Login user={user} />} />
             <Route
               path='/dashboard'
@@ -45,13 +44,14 @@ function App() {
               path='/posts'
               element={user === null ? <Login /> : <Posts user={user} />}
             />
-            <Route
-              path='/signup'
-              element={user === null ? <Login /> : <Register user={user} />}
-            />
+            <Route path='/signup' element=<Register user={user} /> />
             <Route
               path='/me'
               element={user === null ? <Login /> : <Profile user={user} />}
+            />
+            <Route
+              path='/'
+              element={user ? <LandingPage user={user} /> : <Login />}
             />
           </Routes>
         </div>

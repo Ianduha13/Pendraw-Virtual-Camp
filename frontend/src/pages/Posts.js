@@ -2,20 +2,28 @@ import { useState } from "react"
 import { MdOutlineDraw } from "react-icons/md"
 import { useDispatch } from "react-redux"
 import "../components/styles/Form.css"
-import { createPost } from "../features/post/postSlice"
+import { post } from "../features/post/postSlice"
 
 const Register = ({ user }) => {
-  const [title, setTitle] = useState("")
-  const [subtitle, setSubtitle] = useState("")
-  const [text, setText] = useState("")
+  const [formData, setFormData] = useState({
+    title: "",
+    subtitle: "",
+    text: "",
+  })
+  const { title, subtitle, text } = formData
 
   const dispatch = useDispatch()
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
   const onSubmit = (e) => {
     e.preventDefault()
-    dispatch(createPost({ title, subtitle, text }))
-    setTitle("")
-    setSubtitle("")
-    setText("")
+    const postData = { title, subtitle, text }
+    dispatch(post(postData, user.token))
+    setFormData({ title: "", subtitle: "", text: "" })
   }
 
   return (
@@ -37,7 +45,7 @@ const Register = ({ user }) => {
               name='title'
               placeholder='Enter the title'
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={onChange}
             />
           </div>
           <div className='form-group'>
@@ -48,18 +56,18 @@ const Register = ({ user }) => {
               name='subtitle'
               placeholder='Enter the sub-title'
               value={subtitle}
-              onChange={(e) => setSubtitle(e.target.value)}
+              onChange={onChange}
             />
           </div>
           <div className='form-group'>
             <input
               type='text'
               className='form-control'
-              id='post'
-              name='post'
+              id='text'
+              name='text'
               placeholder='Enter the post text'
               value={text}
-              onChange={(e) => setText(e.target.value)}
+              onChange={onChange}
             />
           </div>
           <div className='form-group'>
