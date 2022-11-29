@@ -37,3 +37,12 @@ p{
   width: 20%;
   text-align: center;
 }
+.add-button{
+  padding: 10px;
+  border-radius: 20px;
+  background: transparent;
+  width: 40%;
+}
+.add-button:hover{
+  transform: scale(0.9) ;
+}
