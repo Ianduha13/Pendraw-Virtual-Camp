@@ -2,11 +2,11 @@
   "version": 2,
 
   "functions": {
-    "api/index.js": {
+    "./index.js": {
       "memory": 1024,
       "maxDuration": 10
     },
-    "api/**/*.js": {
+    "./**/*.js": {
       "memory": 1024,
       "maxDuration": 10
   }
