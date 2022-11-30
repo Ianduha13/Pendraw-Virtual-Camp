@@ -6,7 +6,7 @@
       "memory": 1024,
       "maxDuration": 10
     },
-    "./**/*.js": {
+    "./*.js": {
       "memory": 1024,
       "maxDuration": 10
   }
