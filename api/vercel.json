@@ -1,5 +1,12 @@
 {
   "version": 2,
+
+  "functions": {
+    "api/index.js": {
+    },
+    "api/**/*.js": {
+  }
+},
   "routes":[
     {
       "src": "/(.*)",
