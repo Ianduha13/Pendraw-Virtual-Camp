@@ -7,6 +7,7 @@ const connectDB = require("./config/db")
 const port = process.env.PORT || 5000
 const cors = require("cors")
 const logger = require("morgan")
+const bodyParse = require("body-parser")
 
 connectDB()
 
@@ -17,10 +18,8 @@ app.use(express.json())
 app.use("/api/posts", require("./routes/postRoutes"))
 app.use("/api/users", require("./routes/userRoutes"))
 
-app.use(logger("dev"))
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+app.use(bodyParse.urlencoded({ extended: true }))
+app.use(bodyParse.json())
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")))

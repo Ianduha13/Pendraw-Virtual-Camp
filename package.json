@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Ianduha13/taskTrackerV2#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
     "bootstrap": "^5.2.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
