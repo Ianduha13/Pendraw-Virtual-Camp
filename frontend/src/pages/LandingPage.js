@@ -3,18 +3,18 @@ import "../components/styles/CardContainer.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
+const apiUrl = process.env.REACT_APP_API_URL
+
 const LandingPage = ({ user }) => {
-  const API_URL = "/api/posts/"
   const [posts, setPost] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
     axios
-      .get(API_URL)
+      .get(`${apiUrl}/api/posts/`)
       .then((res) => setPost(res.data))
       .catch((err) => console.log(err))
   }, [])
-  console.log(posts)
 
   return (
     <>
